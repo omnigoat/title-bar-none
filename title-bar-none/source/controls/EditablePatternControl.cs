@@ -80,16 +80,16 @@ namespace Atma.TitleBarNone
 					this.ctxMenu.Items.RemoveAt(i);
 			var z = this.ctxMenu.Items.IndexOf(this.insertTag);
 
-			foreach (var tag in CustomizeVSWindowTitle.CurrentPackage.SupportedTags)
+			foreach (var tag in TitleBarNonePackage.CurrentPackage.SupportedTags)
 			{
-				var LocalizedDescription = Resources.ResourceManager.GetString("tag_" + tag.Replace(":", ""));
-				var m = new ToolStripMenuItem(string.Format(this.insertTag.Text, tag))
-				{
-					ToolTipText = LocalizedDescription,
-					Tag = tag
-				};
-				m.Click += this.insertTag_Click;
-				this.ctxMenu.Items.Insert(z++, m);
+				//var LocalizedDescription = Resources.ResourceManager.GetString("tag_" + tag.Replace(":", ""));
+				//var m = new ToolStripMenuItem(string.Format(this.insertTag.Text, tag))
+				//{
+				//	ToolTipText = LocalizedDescription,
+				//	Tag = tag
+				//};
+				//m.Click += this.insertTag_Click;
+				//this.ctxMenu.Items.Insert(z++, m);
 			}
 		}
 
@@ -158,9 +158,9 @@ namespace Atma.TitleBarNone
 					}
 					break;
 			}
-			var settings = CustomizeVSWindowTitle.CurrentPackage.GetSettings(solutionFp);
+			var settings = TitleBarNonePackage.CurrentPackage.GetSettings(solutionFp);
 			var pattern = this.txEdit.Text;
-			this.lbPreview.Text = "preview: " + CustomizeVSWindowTitle.CurrentPackage.GetNewTitle(solution, pattern, settings);
+			this.lbPreview.Text = "preview: " + TitleBarNonePackage.CurrentPackage.GetNewTitle(solution, pattern, settings);
 		}
 	}
 }

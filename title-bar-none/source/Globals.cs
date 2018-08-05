@@ -16,26 +16,19 @@ namespace Atma.TitleBarNone
 
 		public const string SolutionSettingsOverrideExtension = ".rn.xml";
 		public const string PathTag = "Path";
-		public const string SolutionNameTag = "SolutionName";
-		public const string ClosestParentDepthTag = "ClosestParentDepth";
-		public const string FarthestParentDepthTag = "FarthestParentDepth";
-		public const string AppendedStringTag = "AppendedString";
-		public const string PatternIfRunningModeTag = "PatternIfRunningMode";
-		public const string PatternIfBreakModeTag = "PatternIfBreakMode";
-		public const string PatternIfDesignModeTag = "PatternIfDesignMode";
+		public const string SolutionNameTag = "solution-name";
+		public const string SolutionPatternTag = "solution-pattern";
 
 
-		public const string DefaultPatternIfNothingOpen = "[ideName]";
-		public const string DefaultPatternIfDocumentOpen = "[documentName] - [ideName]";
-		public const string DefaultPatternIfDesignMode = "[solutionName] - [ideName]";
-		public const string DefaultPatternIfBreakMode = "[solutionName] (Debugging) - [ideName]";
-		public const string DefaultPatternIfRunningMode = "[solutionName] (Running) - [ideName]";
-		public const string DefaultPatternIfSolutionOpen = "$solution-name-and-mode - $ide-name";
+		public const string DefaultPatternIfNothingOpen = "$ide-name";
+		public const string DefaultPatternIfDocumentOpen = "$document-name - $ide-name";
+		public const string DefaultPatternIfSolutionOpen = "$solution-name ${$ide-mode }- $ide-name";
 
 
 		public static readonly Regex IndexRegex = new Regex(@"^:?(?<index>[0-9]+)$", RegexOptions.Compiled);
 		public static readonly Regex RangeRegex = new Regex(@"^:(?<startIndex>[0-9]+):(?<endIndex>[0-9]+)$", RegexOptions.Compiled);
 
+#if false
 		public static string GetPathForTitle(string[] pathRange)
 		{
 			if (pathRange.Any())
@@ -61,6 +54,7 @@ namespace Atma.TitleBarNone
 			var dispatcher = System.Windows.Application.Current.Dispatcher;
 			dispatcher?.BeginInvoke(action);
 		}
+#endif
 
 		[DllImport("ole32.dll")]
 		static extern int GetRunningObjectTable(uint reserved, out IRunningObjectTable pprot);
